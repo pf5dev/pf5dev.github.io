@@ -1,0 +1,15 @@
+p.topico {font-family: Roboto, sans-serif; font-size: 18px;}
+p.dadosn {font-family: Roboto, sans-serif; font-size: 22px;}
+p.topicohp {font-family: Roboto, sans-serif; font-size: 16px;}
+ul.topicol {font-family: Roboto, sans-serif; font-size: 16px;}
+p.dadosn {text-align: center;}
+p.dadosn {padding-top: 50px;}
+p.topico {padding-left: 50px;}
+p.topico {padding-right: 50px;}
+p.topicohp {padding-left: 50px;}
+p.topicohp {padding-right: 50px;}
+ul.topicol {padding-left: 50px;}
+p.etc {width: 100px; margin:auto;}
+p.contato {font-family: Roboto, sans-serif; font-size: 18px;}
+p.contato {text-align: center;}
+table, th, td {border: 1px solid black; border-collapse: collapse; margin: 0 auto;font-family: Roboto, sans-serif; font-size: 16px;}
