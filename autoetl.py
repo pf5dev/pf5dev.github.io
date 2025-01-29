@@ -63,17 +63,16 @@ for k in range(len(v)):
 	with open(f'{c1.a0+num_str}.sql','w') as f:
 		f.write(f'CREATE TABLE {c1.a1+num_str}(')
 		for n in range(len(l1)):
-			match n:
-				case 9:
-					if l1[n][1]=='object':
-						f.write(f'"{l1[n][0]}" {c1.a4});\n')
-					else:
-						f.write(f'"{l1[n][0]}" {c1.a6});\n')
-				case _:
-					if l1[n][1]=='object':
-						f.write(f'"{l1[n][0]}" {c1.a4},\n')
-					else:
-						f.write(f'"{l1[n][0]}" {c1.a6},\n')
+			if l1[n]==l1[-1]:
+				if l1[n][1]=='object':
+					f.write(f'"{l1[n][0]}" {c1.a4});\n')
+				else:
+					f.write(f'"{l1[n][0]}" {c1.a6});\n')
+			else:
+				if l1[n][1]=='object':
+					f.write(f'"{l1[n][0]}" {c1.a4},\n')
+				else:
+					f.write(f'"{l1[n][0]}" {c1.a6},\n')
 		f.write(f"COPY {c1.a1+num_str} FROM '/docker-entrypoint-initdb.d/{c1.a3[k]}' DELIMITER \'{f0()}\' CSV HEADER;\n")
 
 					
