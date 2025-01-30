@@ -2,6 +2,7 @@ import pandas as pd
 import fnmatch
 import os
 import os.path
+from abc import ABC, abstractmethod
 import unidecode
 import platform
 import charset_normalizer
@@ -27,28 +28,35 @@ for file in os.listdir(u):
 if len(w)>1:
 	w.pop(0)
 #######################################################
-class C1:
+class Base(ABC):
 	def __init__(self,*args):
 		self.a0='script'
 		self.a1='tabela'
-		self.a3=v
-		self.a4='text'
-		self.a5='db'
-		self.a6='numeric'
-c1=C1()
-########################################################
-def f0():
-	l1=[]
-	for x in v:
-		with open(x,'rb') as f1:
-			data=f1.read()
-			x1=charset_normalizer.detect(data)
-			l1.append(data.decode(x1['encoding']))
-			for y in l1:
-				if ';' in y:
-					return ';'
-				else:
-					return ','
+	@abstractmethod
+	def f0(self):
+		pass
+
+class Label(Base):
+	def __init__(self,*args):
+		super().__init__(*args)
+		self.a2=v
+		self.a3='text'
+		self.a4='numeric'
+
+	def f0(self):
+		l1=[]
+		for x in v:
+			with open(x,'rb') as f1:
+				data=f1.read()
+				x1=charset_normalizer.detect(data)
+				l1.append(data.decode(x1['encoding']))
+				for y in l1:
+					if ';' in y:
+						return ';'
+					else:
+						return ','
+label=Label()				
+
 ########################################################
 if platform.system()=='Windows':
 	os.chdir(u+'\x5c')
@@ -56,24 +64,24 @@ else:
 	os.chdir(u+'/')
 for k in range(len(v)):
 	num_str=str(k)
-	df=pd.read_csv(c1.a3[k],sep=f'{f0()}')
+	df=pd.read_csv(label.a2[k],sep=f'{label.f0()}')
 	lc=df.columns.tolist()		
 	l0=df.dtypes.tolist()
 	l1=list(zip(lc,l0))
-	with open(f'{c1.a0+num_str}.sql','w') as f:
-		f.write(f'CREATE TABLE {c1.a1+num_str}(')
+	with open(f'{label.a0+num_str}.sql','w') as f:
+		f.write(f'CREATE TABLE {label.a1+num_str}(')
 		for n in range(len(l1)):
 			if l1[n]==l1[-1]:
 				if l1[n][1]=='object':
-					f.write(f'"{l1[n][0]}" {c1.a4});\n')
+					f.write(f'"{l1[n][0]}" {label.a3});\n')
 				else:
-					f.write(f'"{l1[n][0]}" {c1.a6});\n')
+					f.write(f'"{l1[n][0]}" {label.a4});\n')
 			else:
 				if l1[n][1]=='object':
-					f.write(f'"{l1[n][0]}" {c1.a4},\n')
+					f.write(f'"{l1[n][0]}" {label.a3},\n')
 				else:
-					f.write(f'"{l1[n][0]}" {c1.a6},\n')
-		f.write(f"COPY {c1.a1+num_str} FROM '/docker-entrypoint-initdb.d/{c1.a3[k]}' DELIMITER \'{f0()}\' CSV HEADER;\n")
+					f.write(f'"{l1[n][0]}" {label.a4},\n')
+		f.write(f"COPY {label.a1+num_str} FROM '/docker-entrypoint-initdb.d/{label.a2[k]}' DELIMITER \'{label.f0()}\' CSV HEADER;\n")
 
 					
 
