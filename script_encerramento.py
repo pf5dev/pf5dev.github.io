@@ -10,7 +10,7 @@ while x:
 				'Alterar conta de e-mail @EDU - Campo nome do Usuário','Recuperar conta de e-mail @SME','Alterar Caixa de Correio Compartilhada @SME - campo "Nome"',\
 					'Alterar conta de e-mail @EDU - Campo endereço de e-mail','Alterar caixa de correio compartilhada @SME - campo "Endereço de E-mail"','Conta inacessível @SME','Alterar conta de e-mail @SME - Campo "Endereço de E-mail"',\
 						'Criação da Caixa de Correio Compartilhada','Criação de usuário SEI','Não recebe/ envia e-mail @SME','Alterar conta de e-mail @SME - Campo "Nome de Usuário"',\
-							'Desabilitar usuário do domínio Educação','Criar Usuário SEI']
+							'Desabilitar usuário do domínio Educação','Criar Usuário SEI','E-mail : Alteração de Senha E-mail @EDU']
 	p3=input('Editar assunto [s]im / [n]ao: ')
 	if p3=='s':
 		os.chdir(r'C:\Users\268903258\Documents\docs_N3')
@@ -31,12 +31,13 @@ while x:
 	class Label:
 		def __init__(self,*args):
 			self.s0='Usuário: | '
-			self.s1='Concedido acesso a caixa compartilhada da UE para , conforme solicitado.'
-			self.s2='Removido , da caixa compartilhada da UE conforme solicitado.'
-			self.s3='Segue informações da lista de usuários:'
-			self.s4='Conforme anexo, solicitado alteração de Licença Office365 pela Prodam.'
-			self.s5='Concedido permissão da pasta na rede conforme solicitado.'
-			self.s6='Removido permissão da pasta na rede conforme solicitado.'
+			self.s1='Usuário: | Senha: 12345678'
+			self.s2='Concedido acesso a caixa compartilhada da UE para , conforme solicitado.'
+			self.s3='Removido , da caixa compartilhada da UE conforme solicitado.'
+			self.s4='Segue informações da lista de usuários:'
+			self.s5='Conforme anexo, solicitado alteração de Licença Office365 pela Prodam.'
+			self.s6='Concedido a permissão para a pasta na rede conforme solicitado.'
+			self.s7='Removido a permissão para a pasta na rede conforme solicitado.'
 		def pwdgen(self):
 			u=list(range(48,58))
 			v=list(range(65,91))
@@ -80,6 +81,9 @@ while x:
 			print()
 		case '6':
 			print(f'{closure.s6}')
+			print()
+		case '7':
+			print(f'{closure.s7}')
 			print()
 	p4=input('Continuar [s]im / [n]ao: ')
 	if p4=='s':
