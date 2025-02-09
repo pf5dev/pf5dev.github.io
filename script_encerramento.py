@@ -56,7 +56,7 @@ while x:
 	closure=Label()	
 	##############################################################################
 	print()
-	l4=list(enumerate([f'{closure.s0}',f'{closure.s1}',f'{closure.s2}',f'{closure.s3}',f'{closure.s4}',f'{closure.s5}',f'{closure.s6}']))
+	l4=list(enumerate([f'{closure.s0}',f'{closure.s1}',f'{closure.s2}',f'{closure.s3}',f'{closure.s4}',f'{closure.s5}',f'{closure.s6}',f'{closure.s7}']))
 	print(l4)
 	print()
 	p1=input('Atributo: ')

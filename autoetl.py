@@ -3,7 +3,7 @@ import fnmatch
 import os
 import os.path
 from abc import ABC, abstractmethod
-import unidecode
+from unidecode import unidecode
 import platform
 import charset_normalizer
 if platform.system()=='Windows':
@@ -68,19 +68,20 @@ for k in range(len(v)):
 	lc=df.columns.tolist()		
 	l0=df.dtypes.tolist()
 	l1=list(zip(lc,l0))
+	# print(type(l1[0][0]))
 	with open(f'{label.a0+num_str}.sql','w') as f:
 		f.write(f'CREATE TABLE {label.a1+num_str}(')
 		for n in range(len(l1)):
 			if l1[n]==l1[-1]:
 				if l1[n][1]=='object':
-					f.write(f'"{l1[n][0]}" {label.a3});\n')
+					f.write(f'"{unidecode(l1[n][0])}" {label.a3});\n')
 				else:
-					f.write(f'"{l1[n][0]}" {label.a4});\n')
+					f.write(f'"{unidecode(l1[n][0])}" {label.a4});\n')
 			else:
 				if l1[n][1]=='object':
-					f.write(f'"{l1[n][0]}" {label.a3},\n')
+					f.write(f'"{unidecode(l1[n][0])}" {label.a3},\n')
 				else:
-					f.write(f'"{l1[n][0]}" {label.a4},\n')
+					f.write(f'"{unidecode(l1[n][0])}" {label.a4},\n')
 		f.write(f"COPY {label.a1+num_str} FROM '/docker-entrypoint-initdb.d/{label.a2[k]}' DELIMITER \'{label.f0()}\' CSV HEADER;\n")
 
 					
