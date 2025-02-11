@@ -47,5 +47,8 @@ for arq in s0:
     df3=pd.read_csv(arq)
     for row in range(len(df3)):
         l4=df3.loc[row,['ID do ticket','Assunto']].tolist()
+        # print(l4[1])
         if l4[1] in l3:
-            print(l4[1])
+            match l4.index(l4[1]):
+                case 'E-mail : Criação de E-mail @SME':
+                    print('ok')
